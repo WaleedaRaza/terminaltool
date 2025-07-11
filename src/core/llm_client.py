@@ -95,11 +95,16 @@ class LLMClient:
         """Internal method to get explanation"""
         
         try:
-            if self.config.provider == LLMProvider.OPENAI:
+            # Handle both enum and string provider types
+            provider = self.config.provider
+            if isinstance(provider, str):
+                provider = provider.lower()
+            
+            if provider == LLMProvider.OPENAI or provider == "openai":
                 return await self._call_openai(prompt)
-            elif self.config.provider == LLMProvider.ANTHROPIC:
+            elif provider == LLMProvider.ANTHROPIC or provider == "anthropic":
                 return await self._call_anthropic(prompt)
-            elif self.config.provider == LLMProvider.MOCK:
+            elif provider == LLMProvider.MOCK or provider == "mock":
                 return self._get_mock_response(prompt)
             else:
                 raise ValueError(f"Unsupported LLM provider: {self.config.provider}")

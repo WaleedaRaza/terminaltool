@@ -1,0 +1,18 @@
+# Core dependencies for Networking Tool Copilot
+click>=8.0.0
+rich>=12.0.0
+fastapi>=0.68.0
+uvicorn>=0.15.0
+aiohttp>=3.8.0
+websockets>=10.0
+
+# Development and testing dependencies
+pytest>=6.0
+black>=21.0
+flake8>=3.9
+
+# Additional dependencies for enhanced functionality
+asyncio-mqtt>=0.11.0
+python-dotenv>=0.19.0
+pydantic>=1.8.0
+typing-extensions>=4.0.0 
